@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class PanelManager : MonoBehaviour
@@ -8,12 +9,15 @@ public class PanelManager : MonoBehaviour
     {
         public string name;
         public GameObject panel;
+        public AudioSource openSound;
+        public AudioSource closeSound;
     }
 
     [Header("Alle schermen die beheerd worden")]
     public List<NamedPanel> panels;
 
     private Dictionary<string, GameObject> panelDict;
+    private Stack<GameObject> panelStack = new Stack<GameObject>();
 
     void Awake()
     {
@@ -30,19 +34,64 @@ public class PanelManager : MonoBehaviour
 
     public void ShowPanel(string panelName)
     {
-        foreach (var kvp in panelDict)
-        {
-            kvp.Value.SetActive(false);
-        }
-
-        if (panelDict.ContainsKey(panelName))
-        {
-            panelDict[panelName].SetActive(true);
-            Debug.Log($"Panel '{panelName}' geactiveerd.");
-        }
-        else
+        if (!panelDict.ContainsKey(panelName))
         {
             Debug.LogWarning($"Panel '{panelName}' niet gevonden in PanelManager.");
+            return;
         }
+
+        if (panelStack.Count > 0)
+        {
+            panelStack.Peek().SetActive(false);
+        }
+
+        GameObject newPanel = panelDict[panelName];
+        newPanel.SetActive(true);
+        panelStack.Push(newPanel);
+
+        NamedPanel panelData = panels.Find(p => p.name == panelName);
+        if (panelData.openSound != null)
+        {
+            panelData.openSound.Play();
+        }
+    }
+
+    public void GoBack()
+    {
+        if (panelStack.Count <= 1)
+        {
+            Debug.Log("Geen eerder panel beschikbaar om naar terug te gaan.");
+            return;
+        }
+
+        GameObject currentPanel = panelStack.Pop();
+        currentPanel.SetActive(false);
+
+        GameObject previousPanel = panelStack.Peek();
+        previousPanel.SetActive(true);
+    }
+
+    public void CloseAllPanels()
+    {
+        StartCoroutine(CloseAllPanelsWithSound());
+    }
+
+    private IEnumerator CloseAllPanelsWithSound()
+    {
+        foreach (var panelData in panels)
+        {
+            if (panelData.panel.activeSelf)
+            {
+                if (panelData.closeSound != null)
+                {
+                    panelData.closeSound.Play();
+                    yield return new WaitForSeconds(panelData.closeSound.clip.length);
+                }
+
+                panelData.panel.SetActive(false);
+            }
+        }
+
+        panelStack.Clear();
     }
 }
