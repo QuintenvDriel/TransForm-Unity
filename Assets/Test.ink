@@ -54,7 +54,7 @@ Goedemorgen, heeft u ook een afspraak gemaakt? #speaker:Speler #feedback:Je begr
 Ja ik heb gister telefonisch een afspraak gemaakt. #speaker:Noa #feedback:Je begroette de patiënt op een neutrale en respectvolle manier. Dat is een veilige aanpak, zeker als je iemand voor het eerst spreekt en nog niet weet hoe die graag aangesproken wil worden. Als je wél weet hoe iemand genoemd of aangesproken wil worden , dan is het juist prettig om dat bewust te gebruiken.
 
 
-Dat is mooi dan ga ik dat even voor u opzoeken in het systeem, heeft u ook de #feedback:Je begroette de patiënt op een neutrale en respectvolle manier. Dat is een veilige aanpak, zeker als je iemand voor het eerst spreekt en nog niet weet hoe die graag aangesproken wil worden. Als je wél weet hoe iemand genoemd of aangesproken wil worden , dan is het juist prettig om dat bewust te gebruiken. uitnodiging voor mij? #speaker:Speler
+Dat is mooi dan ga ik dat even voor u opzoeken in het systeem, heeft u ook de uitnodiging voor mij? #speaker:Speler #feedback:Je begroette de patiënt op een neutrale en respectvolle manier. Dat is een veilige aanpak, zeker als je iemand voor het eerst spreekt en nog niet weet hoe die graag aangesproken wil worden. Als je wél weet hoe iemand genoemd of aangesproken wil worden , dan is het juist prettig om dat bewust te gebruiken. 
 
 
 Ja die heb ik hier bij mij. #speaker:Noa #feedback:Je begroette de patiënt op een neutrale en respectvolle manier. Dat is een veilige aanpak, zeker als je iemand voor het eerst spreekt en nog niet weet hoe die graag aangesproken wil worden. Als je wél weet hoe iemand genoemd of aangesproken wil worden , dan is het juist prettig om dat bewust te gebruiken.
