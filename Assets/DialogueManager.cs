@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using System.Runtime.CompilerServices;
 using UnityEngine.SearchService;
 
@@ -17,6 +18,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [SerializeField] private TextMeshProUGUI displayNameText;
+
+    [SerializeField] private TextMeshProUGUI feedbackText;
 
     [SerializeField] private Animator CharacterAnimator;
 
@@ -36,6 +39,8 @@ public class DialogueManager : MonoBehaviour
     private const string SPEAKER_TAG = "speaker";
 
     private const string EMOTION_TAG = "emotion";
+
+    private const string FEEDBACK_TAG = "feedback";
 
     private void Awake()
     {
@@ -91,6 +96,9 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+
+        feedbackText.text = "";
+        feedbackText.gameObject.SetActive(false);
 
         if (currentStory.canContinue)
         {
@@ -151,13 +159,17 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+
+        // Ga naar een andere scene
+        SceneManager.LoadScene("Room1Scene");
     }
 
     public void ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            //dialogueText.text = currentStory.Continue();
+            feedbackText.text = "";
+            feedbackText.gameObject.SetActive(false);
 
             string nextLine = currentStory.Continue();
             dialogueText.text = nextLine;
@@ -222,6 +234,10 @@ public class DialogueManager : MonoBehaviour
                     break;
                 default:
                     Debug.LogWarning("Tag came in but is not curently being handled" + tag);
+                    break;
+                case FEEDBACK_TAG:
+                    feedbackText.text = tagValue;
+                    feedbackText.gameObject.SetActive(true);
                     break;
 
             }
