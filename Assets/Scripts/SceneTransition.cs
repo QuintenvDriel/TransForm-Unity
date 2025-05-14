@@ -9,16 +9,29 @@ public class SceneTransition : MonoBehaviour
 
     public Image fadeImage;
     public float fadeDuration = 1f;
+    public bool enableFade = true;
 
-    public void StartGame()
+    public void LoadScene(string sceneName)
     {
-        StartCoroutine(FadeOutAndLoadScene("HomeScene"));
+        if (enableFade)
+        {
+            //Met fade
+            StartCoroutine(FadeOutAndLoadScene(sceneName));
+        }
+        else
+        {
+            //Zonder fade
+            SceneManager.LoadScene(sceneName);
+        }
     }
+   // public void StartGame()
+    //{
+    //    StartCoroutine(FadeOutAndLoadScene("HomeScene"));
+    //}
 
     private IEnumerator FadeOutAndLoadScene(string sceneName)
     {
         fadeImage.color = new Color(0, 0, 0, 0);
-
         fadeImage.gameObject.SetActive(true);
 
         //Fading naar zwart
