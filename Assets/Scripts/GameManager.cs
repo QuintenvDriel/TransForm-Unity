@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     //De gegevens die bewaart moeten worden tussen scenes
     public bool[] instrumentStatus;
     public bool isInstructieGetoond;
+    public bool isButtonToggled = false;
+    public bool cameFromStartScene = false;
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //Initieren van gegevens
+        //Initieren van instrumentstatus
         if (instrumentStatus == null)
         {
             instrumentStatus = new bool[9];
