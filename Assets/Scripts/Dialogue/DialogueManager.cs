@@ -25,6 +25,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject nextButton;
 
+    [SerializeField] private string endSceneName = "FirstScene";
+
     [Header("Choices UI")]
 
     [SerializeField] private GameObject[] choices;
@@ -161,7 +163,15 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
 
         // Ga naar een andere scene
-        SceneManager.LoadScene("Room1Scene");
+        if (!string.IsNullOrEmpty(endSceneName))
+        {
+            SceneManager.LoadScene(endSceneName);
+        }
+        else
+        {
+            Debug.LogWarning("Geen eindscene opgegeven in de DialogueManager");
+        }
+        //SceneManager.LoadScene("Room1Scene");
     }
 
     public void ContinueStory()
