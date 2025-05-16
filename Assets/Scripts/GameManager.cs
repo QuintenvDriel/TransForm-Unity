@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool isInstructieGetoond;
     public bool isButtonToggled = false;
     public bool cameFromStartScene = false;
+    public int totalScore = 0;
 
     private void Awake()
     {
@@ -40,5 +41,16 @@ public class GameManager : MonoBehaviour
     public void SetInstructieGetoond(bool status)
     {
         isInstructieGetoond = status;
+    }
+
+    public void AddToScore(int value)
+    {
+        totalScore += value;
+        Debug.Log("Nieuwe score: " + totalScore); //check of het werkt.
+    }
+
+    public int GetScore()
+    {
+        return totalScore;
     }
 }

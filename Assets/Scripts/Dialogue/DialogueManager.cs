@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Runtime.CompilerServices;
 using UnityEngine.SearchService;
+using UnityEditor.Profiling.Memory.Experimental;
+using UnityEditor.Experimental.GraphView;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -172,6 +174,17 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Geen eindscene opgegeven in de DialogueManager");
         }
         //SceneManager.LoadScene("Room1Scene");
+
+        //Ophalen van score uit het ink bestand en sla deze op in de GameManger
+        if (currentStory.variablesState["score"] is int inkScoreInt)
+        {
+            GameManager.instance.totalScore = inkScoreInt;
+            Debug.Log("Eindscore uit Ink: " + inkScoreInt);
+        }
+        else
+        {
+            Debug.LogWarning("Ink-score is niet gevonden of geen integer.");
+        }
     }
 
     public void ContinueStory()
@@ -249,7 +262,17 @@ public class DialogueManager : MonoBehaviour
                     feedbackText.text = tagValue;
                     feedbackText.gameObject.SetActive(true);
                     break;
-
+                case "score":
+                    if (int.TryParse(tagValue, out int scoreChange))
+                    {
+                        GameManager.instance.AddToScore(scoreChange);
+                        Debug.Log($"Score is bijgewerkt: {GameManager.instance.GetScore()}");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Kon score-tag niet omzetten naar getal:" + tagValue);
+                    }
+                    break;
             }
         }
     }
