@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 796682145}
   - component: {fileID: 796682144}
   m_Layer: 0
-  m_Name: BackgroundMusic
+  m_Name: MusicProvider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,6 +1376,7 @@ MonoBehaviour:
   isInstructieGetoond: 0
   isButtonToggled: 0
   cameFromStartScene: 1
+  totalScore: 0
 --- !u!4 &1511440765
 Transform:
   m_ObjectHideFlags: 0

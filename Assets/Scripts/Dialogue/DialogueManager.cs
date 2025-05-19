@@ -5,10 +5,6 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using System.Runtime.CompilerServices;
-using UnityEngine.SearchService;
-using UnityEditor.Profiling.Memory.Experimental;
-using UnityEditor.Experimental.GraphView;
 
 public class DialogueManager : MonoBehaviour
 {

@@ -6,11 +6,16 @@ using UnityEngine.UI;
 public class TabelInteraction : MonoBehaviour
 {
     public Button[] smallButtons;
+    public AudioClip smallButtonClickSound;
     public GameObject[] largeButtons;
+    public AudioClip largeButtonClickSound;
+    private AudioSource audioSource;
 
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         for (int i = 0; i < largeButtons.Length; i++)
         {
             if (GameManager.instance.instrumentStatus[i])
@@ -26,24 +31,13 @@ public class TabelInteraction : MonoBehaviour
         }
     }
 
-
-
-
-
-
-    //    private void Start()
-    //    {
-    //        foreach (GameObject largeButtons in largeButtons)
-    //        {
-    //            largeButtons.SetActive(false);
-    //        }
-    //    }
-
-
         public void SmallButtonClick(int index)
         {
             smallButtons[index].interactable = false;
             largeButtons[index].SetActive(true);
+
+        //Speel geluid
+        audioSource.PlayOneShot(smallButtonClickSound);
 
         //Update de GameManager
         GameManager.instance.SetInstrumentStatus(index, true);
@@ -53,6 +47,9 @@ public class TabelInteraction : MonoBehaviour
         {
             largeButtons[index].SetActive(false);
             smallButtons[index].interactable = true;
+
+            //Speel geluid
+            audioSource.PlayOneShot(largeButtonClickSound);
 
             //Update de GameManager
             GameManager.instance.SetInstrumentStatus(index, false);
