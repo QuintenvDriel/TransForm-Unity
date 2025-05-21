@@ -21,6 +21,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private Animator CharacterAnimator;
 
+    [SerializeField] private Animator LayoutAnimator;
+
     [SerializeField] private GameObject nextButton;
 
     [SerializeField] private string endSceneName = "FirstScene";
@@ -42,12 +44,15 @@ public class DialogueManager : MonoBehaviour
 
     private const string FEEDBACK_TAG = "feedback";
 
+    private const string LAYOUT_TAG = "layout";
+
     private void Awake()
     {
         if (instance != null)
         {
-            Debug.LogWarning("Found more than one Dialogue Manager in the scene");
+            Debug.LogWarning("Er is meer dan één dialoogmanager in de scène gevonden");
         }
+        // Retourneer de huidige instantie van de DialogueManager
         instance = this;
     }
 
@@ -62,7 +67,7 @@ public class DialogueManager : MonoBehaviour
             = false;
         dialoguePanel.SetActive(false);
 
-        //get all of the choices text
+        //Haal alle tekst van de keuzes op.
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
         foreach (GameObject choice in choices)
@@ -74,7 +79,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        //return right away if dialogue isn't playing
+        //Stuur direct terug als het dialoog niet aan het afspelen is.
         if (!dialogueIsPlaying)
         {
             return;
@@ -100,6 +105,7 @@ public class DialogueManager : MonoBehaviour
         feedbackText.text = "";
         feedbackText.gameObject.SetActive(false);
 
+        // Als er dialoog verdergaat, toon dan de eerste zin
         if (currentStory.canContinue)
         {
             ContinueStory();
@@ -111,25 +117,27 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    // Verwerk de keuzes van de speler en toon ze
     private void DisplayChoices()
     {
+        // Haal de huidige keuzes op
         List<Choice> currentChoices = currentStory.currentChoices;
 
         if (currentChoices.Count > choices.Length)
         {
-            Debug.LogError("More choices were given than the UI can support. Number of choices given:"
+            Debug.LogError("Er zijn meer keuzes gegeven dan de UI kan ondersteunen. Aantal gegeven keuzes:"
                 + currentChoices.Count);
         }
 
         int index = 0;
-        //enable and initialize the choices upt ot the amount of choices for this line of dialogue
-        foreach(Choice choice in currentChoices)
+        // Toon de keuzes en stel de tekst van de keuzes in
+        foreach (Choice choice in currentChoices)
         {
             choices[index].gameObject.SetActive(true);
             choicesText[index].text = choice.text;
             index++;
         }
-        //go through the remaining choices the UI supports and make sure they're hidden
+        // Verberg de resterende keuzes die niet zichtbaar zijn
         for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
@@ -140,20 +148,25 @@ public class DialogueManager : MonoBehaviour
     }
     private IEnumerator SelectFirstChoice()
     {
-        //event system requires we clear it first, then wait
-        //for at least one frame before we set the current selected object.
+        // Zorg ervoor dat er geen geselecteerd object is
         EventSystem.current.SetSelectedGameObject(null);
+
         yield return new WaitForEndOfFrame();
+
+        // Selecteer de eerste keuze
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
 
+    // Verwerk de keuze van de speler
     public void MakeChoice(int choiceIndex)
     {
+        // Kies de geselecteerde keuze
         currentStory.ChooseChoiceIndex(choiceIndex);
+        // Ga verder met het verhaal na de keuze
         ContinueStory();
     }
 
-
+    // Verlaat de dialoogmodus en laad de eindscene
     private void ExitDialogueMode()
     {
         dialogueIsPlaying = false;
@@ -169,7 +182,6 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("Geen eindscene opgegeven in de DialogueManager");
         }
-        //SceneManager.LoadScene("Room1Scene");
 
         //Ophalen van score uit het ink bestand en sla deze op in de GameManger
         if (currentStory.variablesState["score"] is int inkScoreInt)
@@ -212,37 +224,23 @@ public class DialogueManager : MonoBehaviour
         {
             ExitDialogueMode();
         }
-        //else { 
-
-        //if (currentStory.canContinue)
-        //{
-        //    dialogueText.text = currentStory.Continue();
-        //    DisplayChoices();
-
-            //Handle tags
-        //    HandleTags(currentStory.currentTags);
-        //}
-        //else
-        //{
-        //    ExitDialogueMode();
-        //}
-        //}
+        
     }
     private void HandleTags(List<string> currentTags)
     {
-        //Loop through each tag and handle it accordingly
+        //Loop door elke tag en behandel deze.
         foreach (string tag in currentTags)
         {
-            //Parse the tag
+            //Parse de tags
             string[] splitTag = tag.Split(':');
             if(splitTag.Length != 2)
             {
-                Debug.LogError("Tag could not be appropriately parsed:" + tag);
+                Debug.LogError("Tag kon niet correct worden geparsed" + tag);
             }
             string tagKey = splitTag[0].Trim();
             string tagValue = splitTag[1].Trim();
 
-            //Handle the tag
+            //Handle de tags
             switch (tagKey)
             {
                 case SPEAKER_TAG:
@@ -252,7 +250,10 @@ public class DialogueManager : MonoBehaviour
                     CharacterAnimator.Play(tagValue);
                     break;
                 default:
-                    Debug.LogWarning("Tag came in but is not curently being handled" + tag);
+                    Debug.LogWarning("Tag is binnengekomen maar wordt momenteel niet verwerkt" + tag);
+                    break;
+                case LAYOUT_TAG:
+                    LayoutAnimator.Play(tagValue); 
                     break;
                 case FEEDBACK_TAG:
                     feedbackText.text = tagValue;
