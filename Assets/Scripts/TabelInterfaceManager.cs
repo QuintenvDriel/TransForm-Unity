@@ -27,22 +27,6 @@ public class TabelInterfaceManager : MonoBehaviour
         sluitKnop.onClick.AddListener(CloseUitlegScherm);
     }
 
-    //private void Start()
-    //{
-    //    if (!isUitlegGetoond)
-    //    {
-    //        uitlegScherm.SetActive(true);
-    //
-    //        isUitlegGetoond=true;
-    //    }
-    //    else
-    //    {
-    //        uitlegScherm.SetActive(false);
-    //    }
-    //
-    //    sluitKnop.onClick.AddListener(CloseUitlegScherm);
-    //}
-
     void CloseUitlegScherm()
     {
         uitlegScherm.SetActive(false);

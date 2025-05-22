@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public bool cameFromStartScene = false;
     public int totalScore = 0;
 
+    //Gegevens voor de ToDoList
+    public bool dossierOpened = false;
+    public bool emailOpened = false;
+    public bool instrumentenTafelOpened = false;
+
     private void Awake()
     {
         //Controlleer of er maar 1 instantie is van de GameManager
@@ -53,4 +58,15 @@ public class GameManager : MonoBehaviour
     {
         return totalScore;
     }
+
+    public bool isFirstTaskComplete()
+    {
+        return dossierOpened && emailOpened;
+    }
+
+    public bool isSecondTaskComplete()
+    {
+        return instrumentenTafelOpened;
+    }
+   
 }

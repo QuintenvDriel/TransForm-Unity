@@ -54,6 +54,20 @@ public class PanelManager : MonoBehaviour
         {
             panelData.openSound.Play();
         }
+
+        //To-Do list updates
+        switch (panelName)
+        {
+            case "DossierScreen":
+                GameManager.instance.dossierOpened = true;
+                break;
+            case "OpenMailScreen":
+                GameManager.instance.emailOpened = true;
+                break;
+            case "Tafel":
+                GameManager.instance.instrumentenTafelOpened = true;
+                break;
+        }
     }
 
     public void GoBack()
