@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         // Reset alle gegevens
         isInstructieGetoond = false;
         isButtonToggled = false;
-        cameFromStartScene= false;
+        cameFromStartScene= true;
 
         dossierOpened = false;
         emailOpened = false;
