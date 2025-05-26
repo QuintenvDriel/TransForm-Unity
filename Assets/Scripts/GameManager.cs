@@ -69,4 +69,31 @@ public class GameManager : MonoBehaviour
         return instrumentenTafelOpened;
     }
    
+    public void ResetGame ()
+    {
+        // Reset alle gegevens
+        isInstructieGetoond = false;
+        isButtonToggled = false;
+        cameFromStartScene= false;
+
+        dossierOpened = false;
+        emailOpened = false;
+        instrumentenTafelOpened = false;
+
+        totalScore = 0;
+
+        //Reset de array van de instrumenten status
+        if (instrumentStatus == null || instrumentStatus.Length != 9) 
+        {
+            instrumentStatus = new bool[9];
+        }
+        else
+        {
+            for (int i = 0; i < instrumentStatus.Length; i++)
+            {
+                instrumentStatus[i] = false;
+            }
+        }
+    }
+
 }
