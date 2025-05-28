@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public bool emailOpened = false;
     public bool instrumentenTafelOpened = false;
 
+    //BIjhouden van de gemaakte keuzes
+    public List<string> playerChoices = new List<string>();
+
+
     private void Awake()
     {
         //Controlleer of er maar 1 instantie is van de GameManager
@@ -94,6 +98,19 @@ public class GameManager : MonoBehaviour
                 instrumentStatus[i] = false;
             }
         }
+    }
+
+    public void RecordChoice(string choiceDescription)
+    {
+        playerChoices.Add(choiceDescription);
+        Debug.Log("Keuze Opgeslagen" + choiceDescription);
+    }
+
+
+    //Haal de opgeslagen keuzes op
+    public List<string> GetPlayerChoices()
+    {
+        return playerChoices;
     }
 
 }

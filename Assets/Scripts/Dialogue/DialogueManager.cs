@@ -160,7 +160,14 @@ public class DialogueManager : MonoBehaviour
     // Verwerk de keuze van de speler
     public void MakeChoice(int choiceIndex)
     {
-        // Kies de geselecteerde keuze
+
+        //Verkrijg de gekozen tekst
+        string choiceDescription = currentStory.currentChoices[choiceIndex].text;
+
+        // Sla de keuze op in de GameManager
+        GameManager.instance.RecordChoice(choiceDescription);
+
+        // Kies de volgende stap
         currentStory.ChooseChoiceIndex(choiceIndex);
         // Ga verder met het verhaal na de keuze
         ContinueStory();

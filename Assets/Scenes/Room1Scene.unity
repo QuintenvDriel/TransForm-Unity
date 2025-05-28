@@ -5140,6 +5140,7 @@ MonoBehaviour:
   dossierOpened: 0
   emailOpened: 0
   instrumentenTafelOpened: 0
+  playerChoices: []
 --- !u!4 &1116784950
 Transform:
   m_ObjectHideFlags: 0
