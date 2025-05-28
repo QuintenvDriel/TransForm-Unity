@@ -5,8 +5,6 @@ using TMPro;
 
 public class ShowMadeChoices : MonoBehaviour
 {
-    //[SerializeField] private TextMeshProUGUI feedbackText;
-    //[SerializeField] private GameObject closeButton;
     [SerializeField] private GameObject feedbackPanel;
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Transform buttonContainer;

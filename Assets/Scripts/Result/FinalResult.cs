@@ -18,12 +18,12 @@ public class FinalResult : MonoBehaviour
     {
         int score = GameManager.instance.GetScore();
 
-        if (score >= 3)
+        if (score >= 13)
         {
             resultText.text = "Dank je wel voor de manier waarop je met me bent omgegaan vandaag. Ik voelde me gezien en gerespecteerd, alsof ik gewoon patiënt kon zijn, zonder extra uitleg te hoeven geven over wie ik ben. Je stelde duidelijke vragen, luisterde oprecht en ging professioneel met alles om. Dit soort consulten geven me vertrouwen in de zorg. Ik kom graag nog een keertje bij u terug!";
             characterImage.sprite = happySprite;
         }
-        else if (score >= 0)
+        else if (score >= 4)
         {
             resultText.text = "Ik vond het gesprek op zich oké, maar er waren wel momenten waarop ik me niet helemaal zeker voelde over hoe je me benaderde. Sommige dingen voelde wat onwennig of onduidelijk. Ik weet dat het lastig kan zijn, en ik waardeer je inzet, maar het zou helpen als je nog wat meer aandacht hebt voor hoe je vragen stelt of ruimte laat voor mijn perspectief.";
             characterImage.sprite = neutralSprite;

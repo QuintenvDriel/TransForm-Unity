@@ -96,7 +96,7 @@ Oké, ik vind het fijn dat u hier eerlijk over bent. Ik zal er goed op letten. #
 
 Fijn dat u er zo in staat. Ik zal u nu uitleggen wat ik zo meteen allemaal ga doen en hoe het in zijn werk gaat. #speaker:Speler #layout:Right
 
-~ score = score + 0
+~ score = score + 1
 -> Next2
 
 === Next2 ===
@@ -135,7 +135,7 @@ Dat is geen informatie die ik nu met u wil delen! #speaker:Noa #layout:Left #fee
 
 Oh, oké, sorry. Laten we verdergaan. #speaker:Speler #layout:Right
 
-~ score = score - 1
+~ score = score - 2
 -> Onderzoek
 === Keuze8 ===
 #emotion:Noa_nervous
@@ -143,6 +143,7 @@ Zullen we maar gewoon beginnen? #speaker:Speler #layout:Right #feedback:Let op j
 
 Ja, is goed... laten we maar snel doorgaan, inderdaad. #speaker:Noa #layout:Left #feedback:Let op je toon en tempo. Je gaf het signaal om te starten, maar de formulering ‘Zullen we maar gewoon beginnen?’ klinkt gehaast en onpersoonlijk. Bij een gevoelig onderzoek, zeker voor transgender personen, is het belangrijk om bewust rust, aandacht en regie over te brengen. De reactie van de patiënt klinkt meewerkend, maar ook gespannen. Door het tempo en de toon zorgvuldiger te kiezen, kun je de ervaring veiliger en menselijker maken.
 
+~ score = score + 0
 -> Next3
 === Keuze9 ===
 #emotion:Noa_neutral
@@ -202,7 +203,7 @@ Dat is geen informatie die ik nu met u wil delen! #speaker:Noa #layout:Left #fee
 
 Oh, oké, sorry. Laten we verdergaan. #speaker:Speler #layout:Right
 
-~ score = score - 1
+~ score = score - 2
 -> Onderzoek
 === Antwoord4 ===
 #emotion:Noa_happy
@@ -300,7 +301,7 @@ Kunt u misschien iets rustiger aan doen? Het voelt niet prettig. #speaker:Noa #l
 
 Het onderzoek kan inderdaad wat vervelend aanvoelen, maar daar kan ik nu helaas niks aan veranderen. #speaker:Speler #layout:Right #feedback:Onvoldoende afstemming en respect voor de grens van de patiënt. Je gaf aan dat het onderzoek ongemakkelijk kan zijn, maar je ging tóch door terwijl de patiënt ongemak ervaarde. Voor veel transgenderpersonen, en eigenlijk voor iedereen, is het cruciaal dat zij zich gehoord en gerespecteerd voelen tijdens een inwendig onderzoek. Door door te gaan zonder te checken of de patiënt wil dat je doorgaat, neem je de controle uit handen. Dat kan leiden tot verlies van vertrouwen, spanning of zelfs hertraumatisering.
 
-~ score = score + 0
+~ score = score - 1
 ->END
 === Speculum ===
 #emotion:Noa_happy
@@ -308,7 +309,7 @@ Kunt u misschien iets rustiger aan doen? Het voelt niet prettig. #speaker:Noa #l
 
 Goed dat u het aangeeft. Ik zal kijken of het met een kleiner speculum wat fijner aanvoelt. #speaker:Speler #layout:Right #feedback:Goede respons! Je herkende het ongemak van de patiënt en koos ervoor om je aanpak aan te passen. Dat laat zien dat je sensitief omgaat met signalen van pijn of spanning, essentieel bij intieme onderzoeken, zeker bij transgenderpersonen. Het gebruik van een kleiner speculum is een eenvoudige maar doeltreffende manier om het comfort te vergroten, zeker bij vaginale atrofie door testosterongebruik of verhoogde bekkenbodemspanning.
 
-~ score = score + 1
+~ score = score + 2
 ->END
 === Glijmiddel ===
 #emotion:Noa_happy
