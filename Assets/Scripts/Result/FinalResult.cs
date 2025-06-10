@@ -30,7 +30,7 @@ public class FinalResult : MonoBehaviour
         }
         else
         {
-            resultText.text = "Om eerlijk te zijn voelde dit consult ongemakkelijk voor mij. Er werd weinig rekening gehouden met mijn situatie als transgenderpersoon, en sommige opmerkingen of vragen kwamen niet goed over. Ik had het gevoel dat ik mezelf moest verdedigen of extra moest uitleggen. Ik hoop dat je wilt blijven leren, want hoe je met iemand praat kan echt het verschil maken in of iemand zich veilig voelt bij je. Volgende keer ga ik liever naar iemand anders voor dit onderzoek.";
+            resultText.text = "Om eerlijk te zijn voelde dit consult ongemakkelijk voor mij. Er werd weinig rekening gehouden met mijn situatie als transgender persoon, en sommige opmerkingen of vragen kwamen niet goed over. Ik had het gevoel dat ik mezelf moest verdedigen of extra moest uitleggen. Ik hoop dat je wilt blijven leren, want hoe je met iemand praat kan echt het verschil maken in of iemand zich veilig voelt bij je. Volgende keer ga ik liever naar iemand anders voor dit onderzoek.";
             characterImage.sprite = sadSprite;
         }
     }
